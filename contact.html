@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — FES 2026 | IIT Ropar</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#09173A;--blue:#1446A8;--teal:#1A9E96;--green:#2FB86A;--mid-blue:#1A5CC8;--accent:#3DD67A;--bg:#F5F7FC;--surface:#fff;--text:#0B1730;--text-2:#3A4E72;--muted:#7A8FB0;--border:#DDE5F5;--border-strong:#C5D2EE}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden}
+.topbar{height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--blue) 35%,var(--teal) 65%,var(--green) 100%);position:fixed;top:0;left:0;right:0;z-index:200}
+nav{position:fixed;top:3px;left:0;right:0;z-index:100;padding:0 64px;height:66px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.95);backdrop-filter:blur(24px);box-shadow:0 2px 40px rgba(9,23,58,0.07);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
+.nl-dot{width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;padding:7px 14px;border-radius:8px;transition:all 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy);background:rgba(20,70,168,0.07)}
+.nav-links a.active{font-weight:600}
+.nav-cta{background:var(--navy)!important;color:#fff!important;font-weight:600!important;padding:8px 20px!important;border-radius:10px!important}
+.nav-cta:hover{background:var(--blue)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text-2)}
+.mobile-nav{display:none;position:fixed;top:69px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 28px;flex-direction:column;gap:4px;z-index:99}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:15px;color:var(--text-2);text-decoration:none;font-weight:500;padding:10px 14px;border-radius:8px}
+.mobile-nav a:hover{color:var(--navy);background:var(--bg)}
+.mobile-nav a.m-cta{color:var(--teal);font-weight:700}
+
+.page-hero{background:linear-gradient(135deg,#082A1A 0%,var(--teal) 60%,var(--green) 100%);padding:120px 0 80px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:48px 48px}
+.page-hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+.ph-blob{position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.07);filter:blur(80px);top:-80px;right:-60px;pointer-events:none}
+.inner{max-width:1200px;margin:0 auto;padding:0 64px}
+.ph-inner{position:relative;z-index:1}
+.ph-breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:20px}
+.ph-breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}
+.ph-breadcrumb a:hover{color:rgba(255,255,255,0.8)}
+.ph-breadcrumb span{color:rgba(255,255,255,0.2)}
+.ph-title{font-family:'DM Serif Display',serif;font-size:64px;color:#fff;letter-spacing:-2px;line-height:1.05;margin-bottom:16px}
+.ph-title em{color:rgba(255,255,255,0.75);font-style:italic}
+.ph-desc{font-size:17px;color:rgba(255,255,255,0.65);max-width:560px;line-height:1.75}
+
+.sec{padding:90px 0}
+.sec-alt{background:#fff}
+.sec-label{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.sec-label::before{content:'';width:28px;height:2px;background:var(--green);border-radius:2px}
+.sec-label span{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green)}
+.sec-h{font-family:'DM Serif Display',serif;font-size:46px;color:var(--navy);line-height:1.08;letter-spacing:-1.5px;margin-bottom:20px}
+.sec-h em{color:var(--teal);font-style:italic}
+
+/* CONTACT LAYOUT */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:56px}
+.contact-card{background:#fff;border-radius:24px;padding:44px;box-shadow:0 8px 40px rgba(9,23,58,0.08);border:1.5px solid var(--border)}
+.cc-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);margin-bottom:24px}
+.contact-methods{display:flex;flex-direction:column;gap:14px}
+.cm{display:flex;align-items:center;gap:16px;padding:18px 22px;border:1.5px solid var(--border);border-radius:14px;transition:all 0.25s;background:var(--bg);text-decoration:none}
+.cm:hover{border-color:rgba(20,70,168,0.2);background:#fff;box-shadow:0 4px 20px rgba(9,23,58,0.06);transform:translateX(4px)}
+.cm-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cm-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;font-weight:700}
+.cm-val{font-size:14px;font-weight:700;color:var(--navy)}
+.socials-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.social-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:11px 18px;font-size:13px;font-weight:600;color:var(--text-2);text-decoration:none;transition:all 0.25s}
+.social-btn:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);box-shadow:0 6px 18px rgba(26,158,150,0.1)}
+
+/* SPONSORSHIP */
+.sponsor-card{background:linear-gradient(135deg,rgba(9,23,58,0.04),rgba(20,70,168,0.05));border:1.5px solid rgba(20,70,168,0.14);border-radius:20px;padding:36px;margin-top:24px}
+.sp-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;font-weight:700}
+.sp-title{font-family:'DM Serif Display',serif;font-size:24px;color:var(--navy);margin-bottom:12px}
+.sp-desc{font-size:14px;color:var(--text-2);line-height:1.75;margin-bottom:20px}
+.btn-navy{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;padding:13px 28px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.25s;box-shadow:0 4px 16px rgba(9,23,58,0.2)}
+.btn-navy:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 10px 28px rgba(20,70,168,0.3)}
+
+/* FAQ */
+.faq-layout{display:grid;grid-template-columns:300px 1fr;gap:72px;align-items:start}
+.faq-side-title{font-family:'DM Serif Display',serif;font-size:36px;color:#fff;margin-bottom:16px;line-height:1.1}
+.faq-side-title em{color:var(--teal);font-style:italic}
+.faq-side-body{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:28px}
+.btn-outline-w{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.8);padding:12px 24px;border-radius:12px;font-size:14px;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.25s}
+.btn-outline-w:hover{border-color:rgba(255,255,255,0.5);color:#fff}
+.faq-list{display:flex;flex-direction:column;gap:3px}
+.faq-item{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.08);border-radius:0;overflow:hidden;transition:all 0.25s}
+.faq-item:first-child{border-radius:16px 16px 0 0}
+.faq-item:last-child{border-radius:0 0 16px 16px}
+.faq-item.open{background:rgba(255,255,255,0.08);border-color:rgba(26,158,150,0.3)}
+.faq-q{width:100%;background:none;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;text-align:left;padding:22px 28px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q:hover{color:rgba(255,255,255,0.8)}
+.faq-item.open .faq-q{color:var(--teal)}
+.faq-chevron{width:18px;height:18px;flex-shrink:0;transition:transform 0.3s;color:rgba(255,255,255,0.3)}
+.faq-item.open .faq-chevron{transform:rotate(180deg);color:var(--teal)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-a-inner{padding:0 28px 22px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.8}
+
+.faq-sec{background:var(--navy);padding:90px 0;position:relative;overflow:hidden}
+.faq-sec::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:48px 48px}
+.faq-sec-inner{position:relative;z-index:1}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(.25,.46,.45,.94),transform 0.8s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d2{transition-delay:0.15s}
+
+.site-footer{background:var(--navy);padding:64px;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 52px}
+.f-brand-name{font-family:'DM Serif Display',serif;font-size:28px;color:#fff;margin-bottom:4px}
+.f-brand-name span{color:var(--green)}
+.f-brand-sub{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:18px;font-weight:600}
+.f-about{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.8;max-width:280px}
+.f-col-h{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:18px}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.f-col a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.f-col a:hover{color:var(--teal)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.f-copy{font-size:12px;color:rgba(255,255,255,0.25)}
+.f-bar{display:flex;gap:6px}
+.f-bar span{width:24px;height:3px;border-radius:3px;display:block}
+@media(max-width:1024px){
+  nav,.site-footer{padding-left:28px;padding-right:28px}
+  .nav-links{display:none}.hamburger{display:flex}
+  .inner{padding:0 28px}
+  .contact-layout{grid-template-columns:1fr;gap:44px}
+  .faq-layout{grid-template-columns:1fr;gap:44px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .ph-title{font-size:48px}.sec-h{font-size:38px}
+}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr}.ph-title{font-size:36px}}
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">FES <span class="nl-dot"></span> 2026</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="events.html">Events</a></li><li><a href="speakers.html">Speakers</a></li>
+    <li><a href="schedule.html">Schedule</a></li><li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta active" style="background:var(--teal)!important">Contact →</a></li>
+  </ul>
+  <div class="hamburger" id="hbg"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mnav">
+  <a href="index.html" onclick="cm()">Home</a><a href="about.html" onclick="cm()">About</a>
+  <a href="events.html" onclick="cm()">Events</a><a href="speakers.html" onclick="cm()">Speakers</a>
+  <a href="schedule.html" onclick="cm()">Schedule</a><a href="team.html" onclick="cm()">Team</a>
+  <a href="contact.html" onclick="cm()" class="m-cta">Contact →</a>
+</div>
+
+<div class="page-hero">
+  <div class="ph-blob"></div>
+  <div class="inner ph-inner">
+    <div class="ph-breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,0.7)">Contact</span></div>
+    <h1 class="ph-title">Get in <em>Touch</em></h1>
+    <p class="ph-desc">Questions about competitions, sponsorship, or the event? We're here to help.</p>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="inner">
+    <div class="contact-layout reveal">
+      <div>
+        <div class="sec-label" style="margin-bottom:24px"><span>Contact</span></div>
+        <div class="contact-card">
+          <div class="cc-title">Reach Out</div>
+          <div class="contact-methods">
+            <a href="mailto:fes2026@iitrpr.ac.in" class="cm">
+              <div class="cm-icon" style="background:rgba(20,70,168,0.1)">✉️</div>
+              <div><div class="cm-label">Email</div><div class="cm-val">fes2026@iitrpr.ac.in</div></div>
+            </a>
+            <div class="cm" style="cursor:default">
+              <div class="cm-icon" style="background:rgba(47,184,106,0.1)">📍</div>
+              <div><div class="cm-label">Location</div><div class="cm-val">IIT Ropar, Punjab, India</div></div>
+            </div>
+            <div class="cm" style="cursor:default">
+              <div class="cm-icon" style="background:rgba(74,127,214,0.1)">📅</div>
+              <div><div class="cm-label">Date</div><div class="cm-val">To Be Announced — 2026</div></div>
+            </div>
+          </div>
+          <div style="margin-top:24px">
+            <div style="font-size:13px;color:var(--muted);margin-bottom:14px">Follow us for live updates and speaker reveals:</div>
+            <div class="socials-row">
+              <a href="#" class="social-btn">📷 Instagram</a>
+              <a href="#" class="social-btn">💼 LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-label" style="margin-bottom:24px"><span>Sponsorship</span></div>
+        <div class="contact-card">
+          <div class="cc-title">Partner with FES</div>
+          <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:20px">FES 2026 offers meaningful brand exposure to a high-quality audience of IIT students, faculty, and finance professionals. We have partnership tiers to suit every organisation.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+            <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:16px;text-align:center"><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:700">Title Sponsor</div><div style="font-size:13px;font-weight:700;color:var(--navy)">Maximum Visibility</div></div>
+            <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:16px;text-align:center"><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;font-weight:700">Associate Sponsor</div><div style="font-size:13px;font-weight:700;color:var(--navy)">Brand Partnership</div></div>
+          </div>
+          <a href="mailto:fes2026@iitrpr.ac.in" class="btn-navy">Download Sponsorship Deck →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="faq-sec">
+  <div class="inner faq-sec-inner">
+    <div class="faq-layout reveal">
+      <div>
+        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px"><span style="display:block;width:24px;height:2px;background:var(--teal)"></span>FAQ</div>
+        <div class="faq-side-title">Common<br/><em>Questions</em></div>
+        <p class="faq-side-body">Everything you need to know about FES 2026. Can't find your answer? Email us directly.</p>
+        <a href="mailto:fes2026@iitrpr.ac.in" class="btn-outline-w">Email Us →</a>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Who can participate in FES 2026?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">FES 2026 is primarily open to all IIT Ropar students. Specific competition criteria will be detailed in rulebooks released closer to the event.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a registration fee?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Registration details including any applicable fees will be announced soon. Follow our official channels for updates.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I register for competitions?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Registration links will be shared via Instagram, LinkedIn, and the IIT Ropar student portal. Registrations typically close early — act fast when they open.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need prior finance knowledge?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Not necessarily. Equity Research suits those with financial background; Policy Forge is accessible to anyone with strong analytical skills. The NSE Workshop is designed for all levels.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I attend speaker sessions without competing?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Yes. Speaker sessions are open to all registered attendees — no competition participation required.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How can our company sponsor FES 2026?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Reach out via email at fes2026@iitrpr.ac.in and we'll share our full sponsorship deck with partnership tiers and benefits.</div></div></div>
+        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Where can I get the latest updates?<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div class="faq-a-inner">Follow us on Instagram and LinkedIn for all announcements — speaker reveals, competition launches, registration windows, and schedule updates.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div><div class="f-brand-name">FES <span>2026</span></div><div class="f-brand-sub">Finance &amp; Economics Summit · IIT Ropar</div><p class="f-about">The inaugural Finance and Economics Summit at IIT Ropar — where industry meets academia, and ambition finds its arena.</p></div>
+    <div class="f-col"><div class="f-col-h">Pages</div><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="events.html">Events</a></li><li><a href="speakers.html">Speakers</a></li><li><a href="schedule.html">Schedule</a></li></ul></div>
+    <div class="f-col"><div class="f-col-h">More</div><ul><li><a href="team.html">Our Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="contact.html">Sponsorship</a></li><li><a href="#">Brochure</a></li></ul></div>
+    <div class="f-col"><div class="f-col-h">Connect</div><ul><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="contact.html">Email Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="f-copy">© 2026 Finance and Economics Summit, IIT Ropar. All rights reserved.</div><div class="f-bar"><span style="background:var(--blue)"></span><span style="background:var(--teal)"></span><span style="background:var(--green)"></span></div></div>
+</footer>
+<script>
+document.getElementById('hbg').addEventListener('click',function(){document.getElementById('mnav').classList.toggle('open')});
+function cm(){document.getElementById('mnav').classList.remove('open')}
+var revs=document.querySelectorAll('.reveal');
+function chk(){revs.forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('visible')})}
+window.addEventListener('scroll',chk,{passive:true});chk();
+function toggleFaq(btn){
+  var item=btn.parentElement,ans=item.querySelector('.faq-a'),isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open');el.querySelector('.faq-a').style.maxHeight='0'});
+  if(!isOpen){item.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px'}
+}
+</script>
+</body>
+</html>

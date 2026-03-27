@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Events — FES 2026 | IIT Ropar</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#09173A;--blue:#1446A8;--teal:#1A9E96;--green:#2FB86A;--mid-blue:#1A5CC8;--accent:#3DD67A;--bg:#F5F7FC;--surface:#fff;--text:#0B1730;--text-2:#3A4E72;--muted:#7A8FB0;--border:#DDE5F5;--border-strong:#C5D2EE}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden}
+.topbar{height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--blue) 35%,var(--teal) 65%,var(--green) 100%);position:fixed;top:0;left:0;right:0;z-index:200}
+nav{position:fixed;top:3px;left:0;right:0;z-index:100;padding:0 64px;height:66px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.95);backdrop-filter:blur(24px);box-shadow:0 2px 40px rgba(9,23,58,0.07);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
+.nl-dot{width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;padding:7px 14px;border-radius:8px;transition:all 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy);background:rgba(20,70,168,0.07)}
+.nav-links a.active{font-weight:600}
+.nav-cta{background:var(--navy)!important;color:#fff!important;font-weight:600!important;padding:8px 20px!important;border-radius:10px!important}
+.nav-cta:hover{background:var(--blue)!important;transform:translateY(-1px);box-shadow:0 6px 20px rgba(20,70,168,0.25)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text-2)}
+.mobile-nav{display:none;position:fixed;top:69px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 28px;flex-direction:column;gap:4px;z-index:99;box-shadow:0 12px 40px rgba(9,23,58,0.1)}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:15px;color:var(--text-2);text-decoration:none;font-weight:500;padding:10px 14px;border-radius:8px;transition:all 0.2s}
+.mobile-nav a:hover{color:var(--navy);background:var(--bg)}
+.mobile-nav a.m-cta{color:var(--teal);font-weight:700}
+.page-hero{padding:120px 0 80px;position:relative;overflow:hidden}
+.page-hero.green-hero{background:linear-gradient(135deg,#0A3520 0%,#1A7A40 50%,#2FB86A 100%)}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:48px 48px}
+.page-hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+.ph-blob1{position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.06);filter:blur(80px);top:-100px;right:-80px;pointer-events:none}
+.inner{max-width:1200px;margin:0 auto;padding:0 64px}
+.ph-inner{position:relative;z-index:1}
+.ph-breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:20px}
+.ph-breadcrumb a{color:rgba(255,255,255,0.45);text-decoration:none}
+.ph-breadcrumb a:hover{color:rgba(255,255,255,0.8)}
+.ph-breadcrumb span{color:rgba(255,255,255,0.25)}
+.ph-title{font-family:'DM Serif Display',serif;font-size:64px;color:#fff;letter-spacing:-2px;line-height:1.05;margin-bottom:16px}
+.ph-title em{color:rgba(255,255,255,0.7);font-style:italic}
+.ph-desc{font-size:17px;color:rgba(255,255,255,0.65);max-width:560px;line-height:1.75}
+.sec{padding:90px 0}
+.sec-alt{background:#fff}
+.sec-label{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.sec-label::before{content:'';width:28px;height:2px;background:var(--green);border-radius:2px}
+.sec-label span{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green)}
+.sec-h{font-family:'DM Serif Display',serif;font-size:46px;color:var(--navy);line-height:1.08;letter-spacing:-1.5px;margin-bottom:20px}
+.sec-h em{color:var(--teal);font-style:italic}
+.sec-body{font-size:16px;line-height:1.8;color:var(--text-2)}
+.sec-body strong{color:var(--navy);font-weight:600}
+
+/* COMP CARDS */
+.comp-stack{display:flex;flex-direction:column;gap:32px;margin-top:56px}
+.comp-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 4px 24px rgba(9,23,58,0.07);display:grid;grid-template-columns:340px 1fr;transition:all 0.35s;border:1.5px solid var(--border)}
+.comp-card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(9,23,58,0.12);border-color:transparent}
+.cc-panel{padding:48px 44px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.cc-panel::after{content:'';position:absolute;bottom:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,0.08)}
+.cc1 .cc-panel{background:linear-gradient(155deg,var(--navy),var(--blue))}
+.cc2 .cc-panel{background:linear-gradient(155deg,#0A3520,var(--green))}
+.cc3 .cc-panel{background:linear-gradient(155deg,#093330,var(--teal))}
+.cc-num{font-family:'DM Serif Display',serif;font-size:80px;color:rgba(255,255,255,0.1);line-height:1;position:relative;z-index:1}
+.cc-name{font-family:'DM Serif Display',serif;font-size:32px;color:#fff;margin-bottom:10px;line-height:1.1;position:relative;z-index:1}
+.cc-tagline{font-size:13px;color:rgba(255,255,255,0.6);font-weight:500;letter-spacing:1px;position:relative;z-index:1}
+.cc-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;color:#fff;letter-spacing:1.5px;text-transform:uppercase;margin-top:24px;position:relative;z-index:1}
+.cc-body{padding:48px 44px;display:flex;flex-direction:column;justify-content:space-between}
+.cc-desc{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:28px}
+.cc-details{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:24px;background:var(--bg);border-radius:14px;margin-bottom:24px}
+.cc-detail-item{}
+.cc-di-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:5px}
+.cc-di-val{font-size:13px;font-weight:700;color:var(--navy)}
+.cc-reg{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:12px 24px;border-radius:10px;text-decoration:none;transition:all 0.25s}
+.cc1 .cc-reg{background:var(--blue);color:#fff}
+.cc1 .cc-reg:hover{background:var(--navy);transform:translateY(-2px);box-shadow:0 8px 24px rgba(20,70,168,0.25)}
+.cc2 .cc-reg{background:var(--green);color:#fff}
+.cc2 .cc-reg:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 8px 24px rgba(47,184,106,0.3)}
+.cc3 .cc-reg{background:var(--teal);color:#fff}
+.cc3 .cc-reg:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,158,150,0.3)}
+
+/* NSE WORKSHOP */
+.workshop-sec{background:linear-gradient(135deg,#F0FAFA,#E8F5F0);border-top:1.5px solid rgba(26,158,150,0.15);border-bottom:1.5px solid rgba(26,158,150,0.15);padding:90px 0;position:relative;overflow:hidden}
+.workshop-sec::before{content:'NSE';position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-family:'DM Serif Display',serif;font-size:260px;color:rgba(26,158,150,0.05);line-height:1;pointer-events:none;letter-spacing:-10px}
+.ws-layout{display:grid;grid-template-columns:1fr 340px;gap:80px;align-items:center}
+.ws-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(26,158,150,0.12);border:1.5px solid rgba(26,158,150,0.3);border-radius:40px;padding:8px 20px;margin-bottom:24px}
+.ws-badge span{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0D6B66}
+.ws-title{font-family:'DM Serif Display',serif;font-size:48px;color:var(--navy);line-height:1.05;letter-spacing:-1.5px;margin-bottom:20px}
+.ws-title em{color:var(--teal);font-style:italic}
+.ws-body{font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:32px}
+.ws-body strong{color:var(--navy);font-weight:600}
+.ws-points{display:flex;flex-direction:column;gap:14px}
+.ws-point{display:flex;align-items:flex-start;gap:14px;font-size:14px;color:var(--text-2);line-height:1.6}
+.ws-check{width:22px;height:22px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ws-check svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.nse-card{background:#fff;border-radius:28px;padding:44px;box-shadow:0 20px 64px rgba(9,23,58,0.1),0 0 0 1px rgba(26,158,150,0.12);position:relative;overflow:hidden}
+.nse-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--green))}
+.nse-orb{width:150px;height:150px;border-radius:50%;background:linear-gradient(135deg,rgba(26,158,150,0.15),rgba(47,184,106,0.1));border:2px solid rgba(26,158,150,0.25);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;margin:0 auto 28px;box-shadow:0 8px 32px rgba(26,158,150,0.12)}
+.nse-orb-text{font-family:'DM Serif Display',serif;font-size:38px;color:var(--teal);line-height:1}
+.nse-orb-sub{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(26,158,150,0.6);font-weight:600}
+.nse-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nse-info-item{background:rgba(26,158,150,0.05);border:1px solid rgba(26,158,150,0.15);border-radius:12px;padding:14px}
+.nse-info-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:5px}
+.nse-info-val{font-size:13px;font-weight:700;color:var(--navy)}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(.25,.46,.45,.94),transform 0.8s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}
+.site-footer{background:var(--navy);padding:64px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 52px}
+.f-brand-name{font-family:'DM Serif Display',serif;font-size:28px;color:#fff;margin-bottom:4px}
+.f-brand-name span{color:var(--green)}
+.f-brand-sub{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:18px;font-weight:600}
+.f-about{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.8;max-width:280px}
+.f-col-h{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:18px}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.f-col a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.f-col a:hover{color:var(--teal)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.f-copy{font-size:12px;color:rgba(255,255,255,0.25)}
+.f-bar{display:flex;gap:6px}
+.f-bar span{width:24px;height:3px;border-radius:3px;display:block}
+@media(max-width:1024px){
+  nav,.site-footer{padding-left:28px;padding-right:28px}
+  .nav-links{display:none}.hamburger{display:flex}
+  .inner{padding:0 28px}
+  .comp-card{grid-template-columns:1fr;max-width:600px;margin:0 auto}
+  .cc-panel{padding:36px 32px}
+  .cc-body{padding:36px 32px}
+  .ws-layout{grid-template-columns:1fr;gap:44px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .ph-title{font-size:48px}.sec-h{font-size:38px}
+}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr}.cc-details{grid-template-columns:1fr}.ph-title{font-size:36px}.nse-info-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">FES <span class="nl-dot"></span> 2026</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="events.html" class="active">Events</a></li><li><a href="speakers.html">Speakers</a></li>
+    <li><a href="schedule.html">Schedule</a></li><li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact →</a></li>
+  </ul>
+  <div class="hamburger" id="hbg"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mnav">
+  <a href="index.html" onclick="cm()">Home</a><a href="about.html" onclick="cm()">About</a>
+  <a href="events.html" onclick="cm()">Events</a><a href="speakers.html" onclick="cm()">Speakers</a>
+  <a href="schedule.html" onclick="cm()">Schedule</a><a href="team.html" onclick="cm()">Team</a>
+  <a href="contact.html" onclick="cm()" class="m-cta">Contact →</a>
+</div>
+
+<div class="page-hero green-hero">
+  <div class="ph-blob1"></div>
+  <div class="inner ph-inner">
+    <div class="ph-breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,0.7)">Events</span></div>
+    <h1 class="ph-title">Events &amp; <em>Competitions</em></h1>
+    <p class="ph-desc">Three flagship competitions and an exclusive NSE Workshop — all designed to push your analytical limits and simulate the real world of finance.</p>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-label"><span>Competitions</span></div>
+      <h2 class="sec-h">Compete. Think.<br/><em>Prove your edge.</em></h2>
+      <p class="sec-body" style="max-width:600px">From dissecting balance sheets to crafting national economic policy — each competition is a different test of your financial and analytical acumen.</p>
+    </div>
+    <div class="comp-stack">
+      <div class="comp-card cc1 reveal">
+        <div class="cc-panel">
+          <div><div class="cc-num">01</div><div class="cc-name">Equity Research Challenge</div><div class="cc-tagline">Analyse · Research · Pitch</div></div>
+          <div class="cc-badge">Research Competition</div>
+        </div>
+        <div class="cc-body">
+          <div>
+            <div class="cc-desc">Deep-dive into company fundamentals and build a full investment research report. You'll analyse financials, assess industry dynamics, build valuation models, and present your investment thesis to a panel of finance professionals who will probe and challenge every assumption.</div>
+            <div class="cc-details">
+              <div class="cc-detail-item"><div class="cc-di-label">Team Size</div><div class="cc-di-val">2–3 members</div></div>
+              <div class="cc-detail-item"><div class="cc-di-label">Format</div><div class="cc-di-val">Report + 10-min pitch</div></div>
+              <div class="cc-detail-item"><div class="cc-di-label">Eligibility</div><div class="cc-di-val">All IIT Ropar students</div></div>
+              <div class="cc-detail-item"><div class="cc-di-label">Registration</div><div class="cc-di-val">TBA</div></div>
+            </div>
+          </div>
+          <a href="contact.html" class="cc-reg">Register Interest →</a>
+        </div>
+      </div>
+      <div class="comp-card cc2 reveal d1">
+        <div class="cc-panel">
+          <div><div class="cc-num">02</div><div class="cc-name">Policy Forge</div><div class="cc-tagline">Draft · Debate · Defend</div></div>
+          <div class="cc-badge">Policy Competition</div>
+        </div>
+        <div class="cc-body">
+          <div>
+            <div class="cc-desc">Craft evidence-based economic policy recommendations on a real-world issue. You'll research the landscape, write a policy brief, and defend your recommendations in a structured cross-examination debate before a panel of domain experts. Accessible to all — not just finance students.</div>
+            <div class="cc-details">
+              <div class="cc-detail-item"><div class="cc-di-label">Team Size</div><div class="cc-di-val">3–4 members</div></div>
+              <div class="cc-detail-item"><div class="cc-di-label">Format</div><div class="cc-di-val">Brief + oral defence</div></div>
+              <div class="cc-detail-item"><div class="cc-di-label">Eligibility</div><div class="cc-di-val">All IIT Ropar students</div></div>
+              <div class="cc-detail-item"><div class="cc-di-label">Registration</div><div class="cc-di-val">TBA</div></div>
+            </div>
+          </div>
+          <a href="contact.html" class="cc-reg">Register Interest →</a>
+        </div>
+      </div>
+      <div class="comp-card cc3 reveal d2">
+        <div class="cc-panel">
+          <div><div class="cc-num">03</div><div class="cc-name">More Events</div><div class="cc-tagline">Coming Soon</div></div>
+          <div class="cc-badge">TBA</div>
+        </div>
+        <div class="cc-body">
+          <div>
+            <div class="cc-desc">Additional competitions and challenges are currently being finalised. We're working on bringing you more opportunities to compete, learn, and win. Stay tuned — we'll announce all remaining events closer to the summit.</div>
+            <div class="cc-details">
+              <div class="cc-detail-item"><div class="cc-di-label">Status</div><div class="cc-di-val">In Planning</div></div>
+              <div class="cc-detail-item"><div class="cc-di-label">Updates</div><div class="cc-di-val">Follow our socials</div></div>
+            </div>
+          </div>
+          <a href="contact.html" class="cc-reg">Stay Updated →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="workshop-sec">
+  <div class="inner">
+    <div class="ws-layout reveal">
+      <div>
+        <div class="ws-badge"><span>◆ &nbsp;Official NSE Partner</span></div>
+        <h2 class="ws-title">NSE Workshop —<br/><em>Markets, Live.</em></h2>
+        <p class="ws-body">An exclusive hands-on session by the <strong>National Stock Exchange of India</strong>. Not a lecture — a practitioner-led deep dive into how markets actually work, from the inside.</p>
+        <div class="ws-points">
+          <div class="ws-point"><div class="ws-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Market microstructure and order flow mechanics</div>
+          <div class="ws-point"><div class="ws-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Introduction to trading strategies and risk management</div>
+          <div class="ws-point"><div class="ws-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Live market simulation with real-time data</div>
+          <div class="ws-point"><div class="ws-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Direct Q&A with NSE representatives</div>
+          <div class="ws-point"><div class="ws-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>Certificate of participation from NSE</div>
+        </div>
+      </div>
+      <div class="nse-card">
+        <div class="nse-orb"><div class="nse-orb-text">NSE</div><div class="nse-orb-sub">Workshop</div></div>
+        <div class="nse-info-grid">
+          <div class="nse-info-item"><div class="nse-info-label">Duration</div><div class="nse-info-val">Full Day</div></div>
+          <div class="nse-info-item"><div class="nse-info-label">Date</div><div class="nse-info-val">TBA</div></div>
+          <div class="nse-info-item"><div class="nse-info-label">Seats</div><div class="nse-info-val">Limited</div></div>
+          <div class="nse-info-item"><div class="nse-info-label">Certificate</div><div class="nse-info-val">NSE Certified</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div><div class="f-brand-name">FES <span>2026</span></div><div class="f-brand-sub">Finance &amp; Economics Summit · IIT Ropar</div><p class="f-about">The inaugural Finance and Economics Summit at IIT Ropar.</p></div>
+    <div class="f-col"><div class="f-col-h">Pages</div><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="events.html">Events</a></li><li><a href="speakers.html">Speakers</a></li><li><a href="schedule.html">Schedule</a></li></ul></div>
+    <div class="f-col"><div class="f-col-h">More</div><ul><li><a href="team.html">Our Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="contact.html">Sponsorship</a></li><li><a href="#">Brochure</a></li></ul></div>
+    <div class="f-col"><div class="f-col-h">Connect</div><ul><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="contact.html">Email Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="f-copy">© 2026 Finance and Economics Summit, IIT Ropar.</div><div class="f-bar"><span style="background:var(--blue)"></span><span style="background:var(--teal)"></span><span style="background:var(--green)"></span></div></div>
+</footer>
+<script>
+document.getElementById('hbg').addEventListener('click',function(){document.getElementById('mnav').classList.toggle('open')});
+function cm(){document.getElementById('mnav').classList.remove('open')}
+var revs=document.querySelectorAll('.reveal');
+function chk(){revs.forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('visible')})}
+window.addEventListener('scroll',chk,{passive:true});chk();
+</script>
+</body>
+</html>

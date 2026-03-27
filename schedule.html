@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Schedule — FES 2026 | IIT Ropar</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#09173A;--blue:#1446A8;--teal:#1A9E96;--green:#2FB86A;--mid-blue:#1A5CC8;--accent:#3DD67A;--bg:#F5F7FC;--surface:#fff;--text:#0B1730;--text-2:#3A4E72;--muted:#7A8FB0;--border:#DDE5F5;--border-strong:#C5D2EE}
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden}
+.topbar{height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--blue) 35%,var(--teal) 65%,var(--green) 100%);position:fixed;top:0;left:0;right:0;z-index:200}
+nav{position:fixed;top:3px;left:0;right:0;z-index:100;padding:0 64px;height:66px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.95);backdrop-filter:blur(24px);box-shadow:0 2px 40px rgba(9,23,58,0.07);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
+.nl-dot{width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+.nav-links a{font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;padding:7px 14px;border-radius:8px;transition:all 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy);background:rgba(20,70,168,0.07)}
+.nav-links a.active{font-weight:600}
+.nav-cta{background:var(--navy)!important;color:#fff!important;font-weight:600!important;padding:8px 20px!important;border-radius:10px!important}
+.nav-cta:hover{background:var(--blue)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--text-2)}
+.mobile-nav{display:none;position:fixed;top:69px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 28px;flex-direction:column;gap:4px;z-index:99}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:15px;color:var(--text-2);text-decoration:none;font-weight:500;padding:10px 14px;border-radius:8px}
+.mobile-nav a:hover{color:var(--navy);background:var(--bg)}
+.mobile-nav a.m-cta{color:var(--teal);font-weight:700}
+
+.page-hero{background:var(--navy);padding:120px 0 80px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:48px 48px}
+.page-hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:60px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+.ph-glow1{position:absolute;width:500px;height:500px;border-radius:50%;background:rgba(20,70,168,0.15);filter:blur(100px);top:-100px;right:-100px;pointer-events:none}
+.ph-glow2{position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(47,184,106,0.08);filter:blur(80px);bottom:0;left:5%;pointer-events:none}
+.inner{max-width:1200px;margin:0 auto;padding:0 64px}
+.ph-inner{position:relative;z-index:1}
+.ph-breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:20px}
+.ph-breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}
+.ph-breadcrumb a:hover{color:rgba(255,255,255,0.8)}
+.ph-breadcrumb span{color:rgba(255,255,255,0.2)}
+.ph-title{font-family:'DM Serif Display',serif;font-size:64px;color:#fff;letter-spacing:-2px;line-height:1.05;margin-bottom:16px}
+.ph-title em{color:var(--teal);font-style:italic}
+.ph-desc{font-size:17px;color:rgba(255,255,255,0.6);max-width:560px;line-height:1.75}
+
+.sec{padding:90px 0}
+.sec-label{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.sec-label::before{content:'';width:28px;height:2px;background:var(--green);border-radius:2px}
+.sec-label span{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green)}
+.sec-h{font-family:'DM Serif Display',serif;font-size:46px;color:var(--navy);line-height:1.08;letter-spacing:-1.5px;margin-bottom:20px}
+.sec-h em{color:var(--teal);font-style:italic}
+
+/* DAY TABS */
+.day-tabs-row{display:flex;gap:8px;margin-bottom:0;flex-wrap:wrap}
+.day-btn{padding:12px 28px;border-radius:12px 12px 0 0;border:1.5px solid var(--border);border-bottom:none;background:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;transition:all 0.2s}
+.day-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.day-btn:hover:not(.active){color:var(--navy);background:var(--bg)}
+.day-content-wrap{background:#fff;border:1.5px solid var(--border);border-radius:0 16px 16px 16px;overflow:hidden;box-shadow:0 8px 40px rgba(9,23,58,0.07)}
+.day-panel{display:none}
+.day-panel.active{display:block}
+.dp-header{background:linear-gradient(135deg,var(--navy),var(--blue));padding:36px 48px;position:relative;overflow:hidden}
+.dp-header::after{content:'';position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.06)}
+.dp-h-num{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:6px;font-weight:600}
+.dp-h-title{font-family:'DM Serif Display',serif;font-size:32px;color:#fff;position:relative;z-index:1}
+.dp-h-sub{font-size:14px;color:rgba(255,255,255,0.55);margin-top:6px;position:relative;z-index:1}
+.dp-body{padding:48px}
+.timeline{display:flex;flex-direction:column;gap:0}
+.t-item{display:flex;gap:0;padding-bottom:36px;position:relative}
+.t-item:last-child{padding-bottom:0}
+.t-left{width:110px;flex-shrink:0;padding-top:3px}
+.t-time{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:0.5px}
+.t-spine{display:flex;flex-direction:column;align-items:center;flex-shrink:0;margin-right:28px}
+.t-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:2px;border:2px solid #fff;box-shadow:0 0 0 2px currentColor}
+.t-line{flex:1;width:1.5px;background:var(--border);margin-top:6px}
+.t-item:last-child .t-line{display:none}
+.t-body{flex:1}
+.t-name{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.t-desc{font-size:14px;color:var(--text-2);line-height:1.65;margin-bottom:10px}
+.t-chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;border:1.5px solid}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(.25,.46,.45,.94),transform 0.8s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.site-footer{background:var(--navy);padding:64px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto 52px}
+.f-brand-name{font-family:'DM Serif Display',serif;font-size:28px;color:#fff;margin-bottom:4px}
+.f-brand-name span{color:var(--green)}
+.f-brand-sub{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:18px;font-weight:600}
+.f-about{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.8;max-width:280px}
+.f-col-h{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:18px}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.f-col a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.f-col a:hover{color:var(--teal)}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.f-copy{font-size:12px;color:rgba(255,255,255,0.25)}
+.f-bar{display:flex;gap:6px}
+.f-bar span{width:24px;height:3px;border-radius:3px;display:block}
+@media(max-width:1024px){
+  nav,.site-footer{padding-left:28px;padding-right:28px}
+  .nav-links{display:none}.hamburger{display:flex}
+  .inner{padding:0 28px}
+  .dp-body{padding:28px}
+  .dp-header{padding:28px 32px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .ph-title{font-size:48px}.sec-h{font-size:38px}
+  .t-left{width:80px}
+}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr}.ph-title{font-size:36px}.t-left{width:70px}}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">FES <span class="nl-dot"></span> 2026</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+    <li><a href="events.html">Events</a></li><li><a href="speakers.html">Speakers</a></li>
+    <li><a href="schedule.html" class="active">Schedule</a></li><li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact →</a></li>
+  </ul>
+  <div class="hamburger" id="hbg"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-nav" id="mnav">
+  <a href="index.html" onclick="cm()">Home</a><a href="about.html" onclick="cm()">About</a>
+  <a href="events.html" onclick="cm()">Events</a><a href="speakers.html" onclick="cm()">Speakers</a>
+  <a href="schedule.html" onclick="cm()">Schedule</a><a href="team.html" onclick="cm()">Team</a>
+  <a href="contact.html" onclick="cm()" class="m-cta">Contact →</a>
+</div>
+
+<div class="page-hero">
+  <div class="ph-glow1"></div><div class="ph-glow2"></div>
+  <div class="inner ph-inner">
+    <div class="ph-breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,0.7)">Schedule</span></div>
+    <h1 class="ph-title">Three Days of <em>FES</em></h1>
+    <p class="ph-desc">Keynotes, workshops, competitions, and networking — a full preview of what to expect across each day of the summit.</p>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="inner">
+    <div class="reveal" style="margin-bottom:32px">
+      <div class="sec-label"><span>Schedule</span></div>
+      <h2 class="sec-h">Day by <em>Day</em></h2>
+      <p style="font-size:15px;color:var(--text-2);line-height:1.8;max-width:560px">Full schedule confirmed closer to the event. This preview gives you a sense of how each day unfolds.</p>
+    </div>
+    <div class="day-tabs-row reveal">
+      <button class="day-btn active" onclick="switchDay(0)">Day 1 — Opening</button>
+      <button class="day-btn" onclick="switchDay(1)">Day 2 — Main Events</button>
+      <button class="day-btn" onclick="switchDay(2)">Day 3 — Finals &amp; Closing</button>
+    </div>
+    <div class="day-content-wrap reveal">
+      <div class="day-panel active" id="day0">
+        <div class="dp-header">
+          <div class="dp-h-num">Day 01</div>
+          <div class="dp-h-title">Opening Day — Setting the Stage</div>
+          <div class="dp-h-sub">Welcome ceremonies, keynote, NSE intro, competition briefings</div>
+        </div>
+        <div class="dp-body">
+          <div class="timeline">
+            <div class="t-item"><div class="t-left"><div class="t-time">09:00</div></div><div class="t-spine"><div class="t-dot" style="color:var(--blue)"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">Registration &amp; Welcome</div><div class="t-desc">Check-in, kit distribution, and networking over breakfast. Get your badge, meet fellow participants, and settle in.</div><span class="t-chip" style="color:var(--blue);border-color:rgba(20,70,168,0.3);background:rgba(20,70,168,0.06)">All Participants</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">10:30</div></div><div class="t-spine"><div class="t-dot" style="color:var(--green)"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">Inaugural Ceremony</div><div class="t-desc">Opening address by faculty, student leads, and the inaugural industry speaker. Official launch of FES 2026.</div><span class="t-chip" style="color:#1A7A40;border-color:rgba(47,184,106,0.35);background:rgba(47,184,106,0.08)">Ceremony</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">12:00</div></div><div class="t-spine"><div class="t-dot" style="color:#8B7FE8"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">Keynote Speaker — I</div><div class="t-desc">Industry leader talk on macroeconomic trends and career pathways in finance. Open Q&amp;A session to follow.</div><span class="t-chip" style="color:#6A5FD0;border-color:rgba(106,95,208,0.3);background:rgba(106,95,208,0.07)">Speaker Session</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">14:00</div></div><div class="t-spine"><div class="t-dot" style="color:var(--teal)"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">NSE Workshop — Session I</div><div class="t-desc">Market fundamentals, microstructure, and an introduction to trading mechanics with the National Stock Exchange team.</div><span class="t-chip" style="color:#0D7A74;border-color:rgba(26,158,150,0.3);background:rgba(26,158,150,0.07)">NSE Workshop</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">16:30</div></div><div class="t-spine"><div class="t-dot" style="color:#B08020"></div></div><div class="t-body"><div class="t-name">Competition Briefings</div><div class="t-desc">Rules, formats, and problem statement distribution for all competitions. Teams receive materials and ask clarifying questions.</div><span class="t-chip" style="color:#7A5A10;border-color:rgba(180,130,50,0.3);background:rgba(180,130,50,0.06)">Competitions</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="day-panel" id="day1">
+        <div class="dp-header" style="background:linear-gradient(135deg,#0A3520,var(--green))">
+          <div class="dp-h-num">Day 02</div>
+          <div class="dp-h-title">Main Events — The Heart of FES</div>
+          <div class="dp-h-sub">Equity Research presentations, keynotes, Policy Forge debates, NSE simulation</div>
+        </div>
+        <div class="dp-body">
+          <div class="timeline">
+            <div class="t-item"><div class="t-left"><div class="t-time">09:00</div></div><div class="t-spine"><div class="t-dot" style="color:var(--blue)"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">Equity Research — Presentations</div><div class="t-desc">Teams pitch their investment research reports to a panel of industry professionals who quiz and challenge every assumption.</div><span class="t-chip" style="color:var(--blue);border-color:rgba(20,70,168,0.3);background:rgba(20,70,168,0.06)">Competition</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">11:00</div></div><div class="t-spine"><div class="t-dot" style="color:#8B7FE8"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">Keynote Speaker — II</div><div class="t-desc">Panel discussion on navigating markets, investment strategies, and macro economic shifts.</div><span class="t-chip" style="color:#6A5FD0;border-color:rgba(106,95,208,0.3);background:rgba(106,95,208,0.07)">Speaker Session</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">13:30</div></div><div class="t-spine"><div class="t-dot" style="color:var(--green)"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">Policy Forge — Debates</div><div class="t-desc">Teams present and defend their economic policy recommendations in a structured cross-examination format.</div><span class="t-chip" style="color:#1A7A40;border-color:rgba(47,184,106,0.35);background:rgba(47,184,106,0.08)">Competition</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">15:30</div></div><div class="t-spine"><div class="t-dot" style="color:var(--teal)"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">NSE Workshop — Session II</div><div class="t-desc">Live market simulation with real-time data and direct Q&amp;A with NSE representatives.</div><span class="t-chip" style="color:#0D7A74;border-color:rgba(26,158,150,0.3);background:rgba(26,158,150,0.07)">NSE Workshop</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">17:30</div></div><div class="t-spine"><div class="t-dot" style="color:#B08020"></div></div><div class="t-body"><div class="t-name">Networking Evening</div><div class="t-desc">Open networking session with speakers, panelists, and all participants. The most valuable conversations happen here.</div><span class="t-chip" style="color:#7A5A10;border-color:rgba(180,130,50,0.3);background:rgba(180,130,50,0.06)">Networking</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="day-panel" id="day2">
+        <div class="dp-header" style="background:linear-gradient(135deg,#093330,var(--teal))">
+          <div class="dp-h-num">Day 03</div>
+          <div class="dp-h-title">Finals &amp; Closing — The Verdict</div>
+          <div class="dp-h-sub">Final rounds, closing keynote, awards ceremony</div>
+        </div>
+        <div class="dp-body">
+          <div class="timeline">
+            <div class="t-item"><div class="t-left"><div class="t-time">09:30</div></div><div class="t-spine"><div class="t-dot" style="color:var(--blue)"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">Competition Finals</div><div class="t-desc">Top teams from each competition return for the final rounds. Presentations to the full judging panel.</div><span class="t-chip" style="color:var(--blue);border-color:rgba(20,70,168,0.3);background:rgba(20,70,168,0.06)">Finals</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">11:30</div></div><div class="t-spine"><div class="t-dot" style="color:#8B7FE8"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">Keynote Speaker — III</div><div class="t-desc">Closing industry talk on the future of finance and what it means for students entering the industry today.</div><span class="t-chip" style="color:#6A5FD0;border-color:rgba(106,95,208,0.3);background:rgba(106,95,208,0.07)">Speaker Session</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">13:00</div></div><div class="t-spine"><div class="t-dot" style="color:var(--green)"></div><div class="t-line"></div></div><div class="t-body"><div class="t-name">Jury Deliberation &amp; Lunch</div><div class="t-desc">Judges deliberate while participants enjoy a lunch break and final peer networking.</div><span class="t-chip" style="color:#1A7A40;border-color:rgba(47,184,106,0.35);background:rgba(47,184,106,0.08)">Break</span></div></div>
+            <div class="t-item"><div class="t-left"><div class="t-time">15:00</div></div><div class="t-spine"><div class="t-dot" style="color:#B08020"></div></div><div class="t-body"><div class="t-name">Prize Distribution &amp; Closing Ceremony</div><div class="t-desc">Winners announced, prizes and certificates distributed. Closing remarks from faculty and the organising team.</div><span class="t-chip" style="color:#7A5A10;border-color:rgba(180,130,50,0.3);background:rgba(180,130,50,0.06)">Closing</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div><div class="f-brand-name">FES <span>2026</span></div><div class="f-brand-sub">Finance &amp; Economics Summit · IIT Ropar</div><p class="f-about">The inaugural Finance and Economics Summit at IIT Ropar.</p></div>
+    <div class="f-col"><div class="f-col-h">Pages</div><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="events.html">Events</a></li><li><a href="speakers.html">Speakers</a></li><li><a href="schedule.html">Schedule</a></li></ul></div>
+    <div class="f-col"><div class="f-col-h">More</div><ul><li><a href="team.html">Our Team</a></li><li><a href="contact.html">Contact</a></li><li><a href="contact.html">Sponsorship</a></li><li><a href="#">Brochure</a></li></ul></div>
+    <div class="f-col"><div class="f-col-h">Connect</div><ul><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="contact.html">Email Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="f-copy">© 2026 Finance and Economics Summit, IIT Ropar.</div><div class="f-bar"><span style="background:var(--blue)"></span><span style="background:var(--teal)"></span><span style="background:var(--green)"></span></div></div>
+</footer>
+<script>
+document.getElementById('hbg').addEventListener('click',function(){document.getElementById('mnav').classList.toggle('open')});
+function cm(){document.getElementById('mnav').classList.remove('open')}
+var revs=document.querySelectorAll('.reveal');
+function chk(){revs.forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('visible')})}
+window.addEventListener('scroll',chk,{passive:true});chk();
+function switchDay(i){
+  document.querySelectorAll('.day-btn').forEach(function(b,idx){b.classList.toggle('active',idx===i)});
+  document.querySelectorAll('.day-panel').forEach(function(p,idx){p.classList.toggle('active',idx===i)});
+}
+</script>
+</body>
+</html>
