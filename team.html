@@ -56,17 +56,23 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:100;padding:0 64px;height:66px
 .team-card:hover::after{transform:scaleX(1)}
 .tc-blue::after{background:linear-gradient(90deg,var(--blue),var(--teal))}
 .tc-green::after{background:linear-gradient(90deg,var(--green),var(--teal))}
+/* Make avatar work for both text (AB) and images */
+/* Make avatar work for both text (AB) and images */
 .team-av {
-  overflow: hidden; /* 👈 THIS IS MISSING */
+  overflow: hidden; /* 👈 only addition needed */
 }
 
+/* Only applies when image is used */
 .team-av img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%; /* 👈 fixes face cropping */
+  object-position: center 20%;
+  border-radius: 50%; /* 👈 ensures perfect circle */
   display: block;
-}.team-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
+}
+
+.team-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
 .team-role{font-size:12px;color:var(--muted)}
 .team-badge{display:inline-block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:4px 12px;border-radius:20px;margin-top:10px}
 
