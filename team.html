@@ -56,8 +56,17 @@ nav{position:fixed;top:3px;left:0;right:0;z-index:100;padding:0 64px;height:66px
 .team-card:hover::after{transform:scaleX(1)}
 .tc-blue::after{background:linear-gradient(90deg,var(--blue),var(--teal))}
 .tc-green::after{background:linear-gradient(90deg,var(--green),var(--teal))}
-.team-av{width:100px;height:100px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;font-family:'DM Serif Display',serif}
-.team-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.team-av {
+  overflow: hidden; /* 👈 THIS IS MISSING */
+}
+
+.team-av img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%; /* 👈 fixes face cropping */
+  display: block;
+}.team-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
 .team-role{font-size:12px;color:var(--muted)}
 .team-badge{display:inline-block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:4px 12px;border-radius:20px;margin-top:10px}
 
