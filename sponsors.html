@@ -1,1 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sponsors | FES 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa, #e3f2ed);
+      color: #0b1c39;
+    }
+
+    /* NAVBAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 60px;
+      align-items: center;
+    }
+
+    nav h2 {
+      font-weight: 700;
+      color: #0b1c39;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #0b1c39;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #2bb673;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .header span {
+      color: #2bb673;
+    }
+
+    .header p {
+      margin-top: 10px;
+      color: #555;
+    }
+
+    /* SPONSOR SECTION */
+    .sponsors {
+      padding: 60px;
+      display: grid;
+      gap: 50px;
+    }
+
+    .tier {
+      text-align: center;
+    }
+
+    .tier h2 {
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      color: #0b1c39;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    .card img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #0b1c39;
+      font-weight: 600;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .gold {
+      border-top: 5px solid gold;
+    }
+
+    .partner {
+      border-top: 5px solid #2bb673;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 768px){
+      .header h1 {
+        font-size: 2rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h2>FES 2026</h2>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Schedule</a></li>
+      <li><a href="#">Team</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="header">
+    <h1>Our <span>Sponsors</span></h1>
+    <p>Partners who power Finance & Economics Summit 2026</p>
+  </section>
+
+  <!-- SPONSORS -->
+  <section class="sponsors">
+
+    <!-- GOLD PARTNER -->
+    <div class="tier">
+      <h2>Gold Partner</h2>
+      <div class="card-container">
+
+        <div class="card gold">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Groww_app_logo.png" alt="Groww">
+          <a href="https://groww.in" target="_blank">Groww</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TITLE / MAIN SPONSORS -->
+    <div class="tier">
+      <h2>Partners</h2>
+      <div class="card-container">
+
+        <div class="card partner">
+          <img src="https://play-lh.googleusercontent.com/twGB5FZP9l0R1RykWGBqBPdZiZsaAJ2bX7IuAv89xDSHLVQQP4SRrped1IovnHgwlA=w240-h480-rw" alt="Upstox">
+          <a href="https://upstox.com" target="_blank">Upstox</a>
+        </div>
+
+        <div class="card partner">
+          <img src="https://via.placeholder.com/120" alt="IITian Club">
+          <a href="https://instagram.com/the_iitian_club" target="_blank">@the_iitian_club</a>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Finance & Economics Summit | IIT Ropar
+  </footer>
+
+</body>
+</html>
