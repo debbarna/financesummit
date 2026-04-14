@@ -31,7 +31,6 @@
 
     nav h2 {
       font-weight: 700;
-      color: #0b1c39;
     }
 
     nav ul {
@@ -71,11 +70,11 @@
       color: #555;
     }
 
-    /* SPONSOR SECTION */
+    /* SECTION */
     .sponsors {
       padding: 60px;
       display: grid;
-      gap: 50px;
+      gap: 60px;
     }
 
     .tier {
@@ -83,9 +82,8 @@
     }
 
     .tier h2 {
-      margin-bottom: 25px;
       font-size: 1.8rem;
-      color: #0b1c39;
+      margin-bottom: 30px;
     }
 
     .card-container {
@@ -98,11 +96,10 @@
     .card {
       background: white;
       padding: 30px;
-      width: 250px;
+      width: 260px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       transition: 0.3s;
-      text-align: center;
     }
 
     .card:hover {
@@ -112,7 +109,8 @@
 
     .card img {
       width: 120px;
-      height: auto;
+      height: 120px;
+      object-fit: contain;
       margin-bottom: 15px;
     }
 
@@ -132,6 +130,7 @@
       border-top: 5px solid #2bb673;
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 30px;
@@ -140,11 +139,15 @@
     }
 
     @media(max-width: 768px){
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
       .header h1 {
         font-size: 2rem;
       }
     }
-
   </style>
 </head>
 
@@ -165,7 +168,7 @@
   <!-- HEADER -->
   <section class="header">
     <h1>Our <span>Sponsors</span></h1>
-    <p>Partners who power Finance & Economics Summit 2026</p>
+    <p>Partners powering Finance & Economics Summit 2026</p>
   </section>
 
   <!-- SPONSORS -->
@@ -184,7 +187,7 @@
       </div>
     </div>
 
-    <!-- TITLE / MAIN SPONSORS -->
+    <!-- PARTNERS -->
     <div class="tier">
       <h2>Partners</h2>
       <div class="card-container">
@@ -195,8 +198,8 @@
         </div>
 
         <div class="card partner">
-          <img src="https://via.placeholder.com/120" alt="IITian Club">
-          <a href="https://instagram.com/the_iitian_club" target="_blank">@the_iitian_club</a>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="IITian Club">
+          <a href="https://instagram.com/theiitian_club" target="_blank">@theiitian_club</a>
         </div>
 
       </div>
