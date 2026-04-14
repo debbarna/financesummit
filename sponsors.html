@@ -5,20 +5,47 @@
   <title>Sponsors | FES 2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #f5f7fa, #e3f2ed);
+      font-family: 'Poppins', sans-serif;
       color: #0b1c39;
+      overflow-x: hidden;
+      background: #f7f9fc;
+      position: relative;
+    }
+
+    /* GRID BACKGROUND */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(#dfe6ee 1px, transparent 1px),
+                        linear-gradient(90deg, #dfe6ee 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.4;
+      z-index: -2;
+    }
+
+    /* GRADIENT GLOW */
+    body::after {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(43,182,115,0.25), transparent 70%);
+      top: 10%;
+      right: -150px;
+      z-index: -1;
     }
 
     /* NAVBAR */
@@ -43,7 +70,6 @@
       text-decoration: none;
       color: #0b1c39;
       font-weight: 500;
-      transition: 0.3s;
     }
 
     nav ul li a:hover {
@@ -53,20 +79,22 @@
     /* HEADER */
     .header {
       text-align: center;
-      padding: 60px 20px 30px;
+      padding: 80px 20px 40px;
     }
 
     .header h1 {
-      font-size: 3rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
       font-weight: 700;
     }
 
     .header span {
       color: #2bb673;
+      font-style: italic;
     }
 
     .header p {
-      margin-top: 10px;
+      margin-top: 15px;
       color: #555;
     }
 
@@ -74,7 +102,7 @@
     .sponsors {
       padding: 60px;
       display: grid;
-      gap: 60px;
+      gap: 70px;
     }
 
     .tier {
@@ -82,34 +110,38 @@
     }
 
     .tier h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
     }
 
     .card-container {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 35px;
       flex-wrap: wrap;
     }
 
+    /* GLASS CARD */
     .card {
-      background: white;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.75);
       padding: 30px;
       width: 260px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.3);
     }
 
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
     }
 
     .card img {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 80px;
       object-fit: contain;
       margin-bottom: 15px;
     }
@@ -130,24 +162,23 @@
       border-top: 5px solid #2bb673;
     }
 
-    /* Footer */
     footer {
       text-align: center;
-      padding: 30px;
+      padding: 40px;
       color: #777;
-      font-size: 0.9rem;
     }
 
     @media(max-width: 768px){
+      .header h1 {
+        font-size: 2.3rem;
+      }
+
       nav {
         flex-direction: column;
         gap: 10px;
       }
-
-      .header h1 {
-        font-size: 2rem;
-      }
     }
+
   </style>
 </head>
 
@@ -174,13 +205,13 @@
   <!-- SPONSORS -->
   <section class="sponsors">
 
-    <!-- GOLD PARTNER -->
+    <!-- GOLD -->
     <div class="tier">
       <h2>Gold Partner</h2>
       <div class="card-container">
 
         <div class="card gold">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Groww_app_logo.png" alt="Groww">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Groww_logo.png" alt="Groww">
           <a href="https://groww.in" target="_blank">Groww</a>
         </div>
 
@@ -193,7 +224,7 @@
       <div class="card-container">
 
         <div class="card partner">
-          <img src="https://play-lh.googleusercontent.com/twGB5FZP9l0R1RykWGBqBPdZiZsaAJ2bX7IuAv89xDSHLVQQP4SRrped1IovnHgwlA=w240-h480-rw" alt="Upstox">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Upstox_logo.png" alt="Upstox">
           <a href="https://upstox.com" target="_blank">Upstox</a>
         </div>
 
@@ -207,7 +238,6 @@
 
   </section>
 
-  <!-- FOOTER -->
   <footer>
     © 2026 Finance & Economics Summit | IIT Ropar
   </footer>
