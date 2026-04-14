@@ -118,24 +118,45 @@ nav.scrolled{background:rgba(255,255,255,0.95);backdrop-filter:blur(24px);box-sh
 .pn-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:18px}
 .pn-link{font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:gap 0.2s}
 /* FIX SPONSOR ICONS (CRITICAL) */
-.pn-icon img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-  display: block;
-}
+
 
 /* CENTER ALIGN PERFECTLY */
-.pn-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 /* PREVENT BIG IMAGE BUG */
 .pn-card img {
   max-width: 100%;
   height: auto;
+}
+  /* FORCE PERFECT SQUARE ICON */
+.pn-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  /* IMPORTANT */
+  flex-shrink: 0;
+}
+
+/* REMOVE ANY STRETCHING */
+.pn-card .pn-icon {
+  width: 52px !important;
+  height: 52px !important;
+}
+
+/* LOGO SIZE */
+.pn-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 /* SECTION HEADING */
 .sec-label{display:flex;align-items:center;gap:12px;margin-bottom:16px}
